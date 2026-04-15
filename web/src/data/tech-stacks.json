@@ -1,0 +1,13 @@
+[
+  { "id": "react", "name": "React", "category": "Frontend" },
+  { "id": "vite", "name": "ViteJS", "category": "Frontend" },
+  { "id": "tailwind", "name": "Tailwind CSS", "category": "Frontend" },
+  { "id": "typescript", "name": "TypeScript", "category": "Frontend" },
+  { "id": "spring-boot", "name": "Spring Boot", "category": "Backend" },
+  { "id": "dotnet", "name": ".NET", "category": "Backend" },
+  { "id": "node", "name": "Node.js", "category": "Backend" },
+  { "id": "postgres", "name": "PostgreSQL", "category": "Backend" },
+  { "id": "docker", "name": "Docker", "category": "Tools" },
+  { "id": "git", "name": "Git", "category": "Tools" }
+]
+
