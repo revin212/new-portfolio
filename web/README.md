@@ -1,27 +1,62 @@
-# React + TypeScript + Vite
+# New Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vite + React + TypeScript portfolio with TailwindCSS, URL-based profiles, and JSON-driven sections/projects/tech stacks.
 
-Currently, two official plugins are available:
+## How to run (local development)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1) Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js (this repo currently works with Node 16+, but newer is recommended)
+- npm
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 2) Install dependencies
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+cd web
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 3) Configure environment variables (for the contact API)
+
+Copy the example env file and fill in your values:
+
+```bash
+cd web
+copy .env.example .env.local
+```
+
+Required variables for Gmail SMTP sending:
+
+- `SMTP_USER` (your Gmail / Google Workspace address)
+- `SMTP_PASS` (Google App Password)
+- `CONTACT_TO_EMAIL` (an email inbox you own that will receive messages)
+
+### 4) Run the API server (email sender)
+
+In terminal 1:
+
+```bash
+cd web
+npm run dev:api
+```
+
+API listens on `http://localhost:8787` by default.
+
+### 5) Run the frontend (Vite)
+
+In terminal 2:
+
+```bash
+cd web
+npm run dev
+```
+
+Open:
+
+- `http://localhost:5173/java-portfolio`
+- `http://localhost:5173/dotnet-portfolio`
+
+## Notes
+
+- The contact form posts to `POST /api/contact` and is proxied to `http://localhost:8787` in `vite.config.ts` during development.
+- Do **not** put real secrets in git. Use `.env.local` (not committed) and keep `.env.example` updated.
