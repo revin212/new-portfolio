@@ -9,6 +9,17 @@
     "visibleProjectIds": ["smart-pos-inventory"],
     "visibleTechStackIds": ["vite", "spring-boot", "react", "tailwind", "typescript", "git", "docker"]
   },
+  "portfolio-freelance": {
+    "sections": ["hero", "experience", "projects", "techStack", "contact", "footer"],
+    "visibleProjectIds": [
+      "website-undangan",
+      "sim-sekolah",
+      "pos-inventory-umkm",
+      "booking-system-website",
+      "landing-page-perusahaan"
+    ],
+    "visibleTechStackIds": ["react", "vite", "tailwind", "typescript", "git"]
+  },
   "default": {
     "redirectTo": "java-portfolio"
   }

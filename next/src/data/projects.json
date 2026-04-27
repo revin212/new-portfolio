@@ -22,6 +22,51 @@
       "live": null,
       "repo": null
     }
+  },
+  {
+    "id": "website-undangan",
+    "title": "Website Undangan",
+    "subtitle": "Invitation website (freelance)",
+    "description": "A modern invitation website with responsive layout and shareable links.",
+    "techStackIds": ["react", "vite", "tailwind", "typescript"],
+    "image": null,
+    "links": { "live": null, "repo": null }
+  },
+  {
+    "id": "sim-sekolah",
+    "title": "System Information Management Sekolah",
+    "subtitle": "School information management system (freelance)",
+    "description": "An information management system to support school administration and reporting.",
+    "techStackIds": ["react", "vite", "tailwind", "typescript"],
+    "image": null,
+    "links": { "live": null, "repo": null }
+  },
+  {
+    "id": "pos-inventory-umkm",
+    "title": "Point Of Sales & Inventory Management UMKM",
+    "subtitle": "POS & inventory system for small businesses (freelance)",
+    "description": "A POS and inventory management system focused on simplicity and operational speed.",
+    "techStackIds": ["react", "vite", "tailwind", "typescript"],
+    "image": null,
+    "links": { "live": null, "repo": null }
+  },
+  {
+    "id": "booking-system-website",
+    "title": "Website System Booking",
+    "subtitle": "Booking system website (freelance)",
+    "description": "A booking website with schedule/availability flow and clear call-to-actions.",
+    "techStackIds": ["react", "vite", "tailwind", "typescript"],
+    "image": null,
+    "links": { "live": null, "repo": null }
+  },
+  {
+    "id": "landing-page-perusahaan",
+    "title": "Landing Page Perusahaan",
+    "subtitle": "Company landing page (freelance)",
+    "description": "A conversion-focused landing page with clean sections and responsive design.",
+    "techStackIds": ["react", "vite", "tailwind", "typescript"],
+    "image": null,
+    "links": { "live": null, "repo": null }
   }
 ]
 
