@@ -12,7 +12,7 @@ export function HeroSection({ profile }: Props) {
   return (
     <section
       id="hero"
-      className="min-h-[85vh] flex items-center px-8 max-w-7xl mx-auto py-20"
+      className="min-h-[85vh] flex items-center px-6 sm:px-8 max-w-7xl mx-auto py-16 sm:py-20"
     >
       <div className="grid lg:grid-cols-12 gap-12 items-center w-full">
         <div className="lg:col-span-8 space-y-8">
@@ -24,7 +24,7 @@ export function HeroSection({ profile }: Props) {
             <h1 className="text-2xl md:text-3xl font-bold text-primary mb-4 tracking-tight font-headline">
               Hi, I&apos;m
             </h1>
-            <h2 className="text-7xl md:text-[120px] font-[800] tracking-tighter text-on-surface leading-[0.8] mb-8 font-headline">
+            <h2 className="text-6xl sm:text-7xl md:text-[120px] font-[800] tracking-tighter text-on-surface leading-[0.85] sm:leading-[0.8] mb-8 font-headline">
               Revin <br />
               Dennis <br />
               <span className="text-primary italic">Ramadhan</span>

@@ -8,6 +8,8 @@ export function ContactSection() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
 
+  const isLoading = status === "loading";
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
@@ -64,6 +66,16 @@ export function ContactSection() {
               technical collaborations. Drop a message and let&apos;s start the
               conversation.
             </p>
+
+            <div className="mt-10 max-w-md rounded-2xl bg-surface-container-lowest/70 backdrop-blur border border-outline-variant/10 p-6">
+              <p className="text-xs uppercase tracking-widest text-outline font-bold">
+                Response time
+              </p>
+              <p className="mt-2 text-on-surface-variant leading-relaxed">
+                Typically within <span className="text-on-surface font-semibold">24 hours</span>. Include
+                context and a preferred timeline.
+              </p>
+            </div>
           </div>
 
           <div className="bg-surface-container-lowest p-10 rounded-2xl shadow-ambient border border-outline-variant/15">
@@ -78,64 +90,102 @@ export function ContactSection() {
               />
 
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+                <label
+                  htmlFor="contact-name"
+                  className="text-xs font-bold uppercase tracking-widest text-on-surface-variant"
+                >
                   Name
                 </label>
                 <input
-                  className="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:ring-0 focus:border-primary transition-colors py-4"
+                  id="contact-name"
+                  className="w-full bg-surface-container-high rounded-xl border-none border-b-2 border-outline-variant/70 focus:ring-0 focus:border-primary transition-colors py-4 px-4 placeholder:text-on-surface-variant/70"
                   placeholder="John Doe"
                   type="text"
                   name="name"
                   required
-                  disabled={status === "loading"}
+                  disabled={isLoading}
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+                <label
+                  htmlFor="contact-email"
+                  className="text-xs font-bold uppercase tracking-widest text-on-surface-variant"
+                >
                   Email
                 </label>
                 <input
-                  className="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:ring-0 focus:border-primary transition-colors py-4"
+                  id="contact-email"
+                  className="w-full bg-surface-container-high rounded-xl border-none border-b-2 border-outline-variant/70 focus:ring-0 focus:border-primary transition-colors py-4 px-4 placeholder:text-on-surface-variant/70"
                   placeholder="john@example.com"
                   type="email"
                   name="email"
                   required
-                  disabled={status === "loading"}
+                  disabled={isLoading}
                 />
+                <p className="text-xs text-on-surface-variant">
+                  I’ll reply to this address.
+                </p>
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+                <label
+                  htmlFor="contact-message"
+                  className="text-xs font-bold uppercase tracking-widest text-on-surface-variant"
+                >
                   Message
                 </label>
                 <textarea
-                  className="w-full bg-surface-container-high border-none border-b-2 border-outline-variant focus:ring-0 focus:border-primary transition-colors py-4 resize-none"
+                  id="contact-message"
+                  className="w-full bg-surface-container-high rounded-xl border-none border-b-2 border-outline-variant/70 focus:ring-0 focus:border-primary transition-colors py-4 px-4 resize-none placeholder:text-on-surface-variant/70"
                   placeholder="Tell me about your project..."
                   rows={4}
                   name="message"
                   required
-                  disabled={status === "loading"}
+                  disabled={isLoading}
                 />
               </div>
 
-              <button
-                className="w-full bg-gradient-to-br from-primary to-primary-dim text-on-primary py-5 rounded-xl font-bold flex items-center justify-center gap-3 hover:opacity-95 transition-opacity active:scale-[0.99]"
-                type="submit"
-                disabled={status === "loading"}
-              >
-                {status === "loading" ? "Sending..." : "Send Message"}
-              </button>
+              <div className="pt-2">
+                <button
+                  className="w-full bg-gradient-to-br from-primary to-primary-dim text-on-primary py-5 rounded-xl font-bold flex items-center justify-center gap-3 transition-all active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed shadow-ambient shadow-primary/20 hover:shadow-primary/25"
+                  type="submit"
+                  disabled={isLoading}
+                >
+                  <span className="inline-flex items-center gap-3">
+                    <span className="tracking-tight">
+                      {isLoading ? "Sending..." : "Send Message"}
+                    </span>
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-on-primary/10">
+                      {isLoading ? (
+                        <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-on-primary/50 border-t-on-primary" />
+                      ) : (
+                        <span className="text-sm">→</span>
+                      )}
+                    </span>
+                  </span>
+                </button>
+              </div>
 
               {status === "success" ? (
-                <p className="text-sm text-primary font-semibold">
-                  Thanks — your message was sent.
-                </p>
+                <div className="rounded-xl bg-primary-container/30 border border-outline-variant/15 px-4 py-3">
+                  <p className="text-sm text-on-surface font-semibold">
+                    Thanks — your message was sent.
+                  </p>
+                  <p className="text-xs text-on-surface-variant mt-1">
+                    I’ll reply to your email as soon as possible.
+                  </p>
+                </div>
               ) : null}
               {status === "error" ? (
-                <p className="text-sm text-error font-semibold">
-                  {error ?? "Failed to send message."}
-                </p>
+                <div className="rounded-xl bg-error-container/20 border border-outline-variant/15 px-4 py-3">
+                  <p className="text-sm text-error font-semibold">
+                    {error ?? "Failed to send message."}
+                  </p>
+                  <p className="text-xs text-on-surface-variant mt-1">
+                    Please try again in a moment.
+                  </p>
+                </div>
               ) : null}
             </form>
           </div>

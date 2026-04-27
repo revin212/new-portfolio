@@ -7,6 +7,10 @@
     color-scheme: light;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   html,
   body {
     height: 100%;
@@ -22,5 +26,23 @@
   h3,
   h4 {
     font-family: Manrope, ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Prevent anchor targets from hiding behind fixed navbar */
+  section[id] {
+    scroll-margin-top: 96px;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(12px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 }

@@ -18,10 +18,10 @@
       "booking-system-website",
       "landing-page-perusahaan"
     ],
-    "visibleTechStackIds": ["react", "vite", "tailwind", "typescript", "git"]
+    "visibleTechStackIds": ["next", "react", "vite", "tailwind", "typescript", "node","spring-boot","dotnet","postgres","sqlserver","mysql","git", "docker", "firebase"]
   },
   "default": {
-    "redirectTo": "java-portfolio"
+    "redirectTo": "portfolio-freelance"
   }
 }
 
