@@ -35,7 +35,7 @@ export default function ProfilePage({
             case "contact":
               return <ContactSection key={id} />;
             case "footer":
-              return <FooterSection key={id} />;
+              return <FooterSection key={id} profile={profile} />;
             default:
               return null;
           }

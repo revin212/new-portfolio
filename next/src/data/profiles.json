@@ -2,12 +2,22 @@
   "dotnet-portfolio": {
     "sections": ["hero", "experience", "projects", "techStack", "contact", "footer"],
     "visibleProjectIds": ["sim-sekolah"],
-    "visibleTechStackIds": ["vite", "dotnet", "react", "tailwind", "typescript", "git", "docker"]
+    "visibleTechStackIds": ["vite", "dotnet", "react", "tailwind", "typescript", "git", "docker"],
+    "socialLinks": [
+      { "id": "github", "url": "https://github.com/revin212" },
+      { "id": "linkedin", "url": "https://www.linkedin.com/in/revin-dennis-ramadhan/" },
+      { "id": "instagram", "url": "https://www.instagram.com/revindr21" }
+    ]
   },
   "java-portfolio": {
     "sections": ["hero", "experience", "projects", "techStack", "contact", "footer"],
     "visibleProjectIds": ["pos-inventory-dashboard", "futsal-booking"],
-    "visibleTechStackIds": ["vite", "spring-boot", "react", "tailwind", "typescript", "git", "docker"]
+    "visibleTechStackIds": ["vite", "spring-boot", "react", "tailwind", "typescript", "git", "docker"],
+    "socialLinks": [
+      { "id": "github", "url": "https://github.com/revin212" },
+      { "id": "linkedin", "url": "https://www.linkedin.com/in/revin-dennis-ramadhan/" },
+      { "id": "instagram", "url": "https://www.instagram.com/revindr21" }
+    ]
   },
   "portfolio-freelance": {
     "sections": ["hero", "projects", "contact", "footer"],
@@ -16,6 +26,11 @@
       "sim-sekolah",
       "pos-inventory-dashboard",
       "futsal-booking"
+    ],
+    "socialLinks": [
+      { "id": "github", "url": "https://github.com/revin212" },
+      { "id": "instagram", "url": "https://www.instagram.com/revindr21" },
+      { "id": "whatsapp", "url": "https://wa.me/6281392109140" }
     ]
   },
   "default": {

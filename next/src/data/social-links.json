@@ -1,0 +1,32 @@
+[
+  {
+    "id": "github",
+    "label": "GitHub",
+    "icon": "/images/github-icon.png"
+  },
+  {
+    "id": "linkedin",
+    "label": "LinkedIn",
+    "icon": "/images/linkedin-icon.png"
+  },
+  {
+    "id": "instagram",
+    "label": "Instagram",
+    "icon": "/images/instagram-icon.png"
+  },
+  {
+    "id": "whatsapp",
+    "label": "WhatsApp",
+    "icon": "/images/whatsapp-icon.png"
+  },
+  {
+    "id": "x",
+    "label": "X",
+    "icon": "/images/x-icon.png"
+  },
+  {
+    "id": "threads",
+    "label": "Threads",
+    "icon": "/images/threads-icon.png"
+  }
+]

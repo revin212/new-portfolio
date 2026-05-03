@@ -1,6 +1,7 @@
 import profilesRaw from "../data/profiles.json";
 import projectsRaw from "../data/projects.json";
 import sectionsRaw from "../data/sections.json";
+import socialLinksRaw from "../data/social-links.json";
 import techStacksRaw from "../data/tech-stacks.json";
 
 export type SectionId =
@@ -38,10 +39,27 @@ export type TechStack = {
   category: "Frontend" | "Backend" | "Tools" | string;
 };
 
+export type SocialLinkCatalogItem = {
+  id: string;
+  label: string;
+  icon: string;
+};
+
+export type ProfileSocialLink = {
+  id: string;
+  url: string;
+};
+
+export type ResolvedFooterSocialLink = SocialLinkCatalogItem & {
+  url: string;
+};
+
 export type PortfolioProfile = {
   sections: SectionId[];
   visibleProjectIds: string[];
   visibleTechStackIds: string[];
+  /** Ordered list of social entries to show in the footer; ids must exist in social-links.json */
+  socialLinks?: ProfileSocialLink[];
   pageTitle?: string;
   tagline?: string;
 };
@@ -52,6 +70,7 @@ const profiles = profilesRaw as unknown as ProfilesJson;
 const projects = projectsRaw as unknown as Project[];
 const techStacks = techStacksRaw as unknown as TechStack[];
 const sections = sectionsRaw as unknown as SectionRegistryItem[];
+const socialLinkCatalog = socialLinksRaw as unknown as SocialLinkCatalogItem[];
 
 export function getProfile(slug: string): PortfolioProfile | null {
   const value = profiles[slug];
@@ -62,9 +81,27 @@ export function getProfile(slug: string): PortfolioProfile | null {
     sections: p.sections as SectionId[],
     visibleProjectIds: (p.visibleProjectIds ?? []) as string[],
     visibleTechStackIds: (p.visibleTechStackIds ?? []) as string[],
+    socialLinks: Array.isArray(p.socialLinks)
+      ? (p.socialLinks as ProfileSocialLink[])
+      : undefined,
     pageTitle: p.pageTitle,
     tagline: p.tagline,
   };
+}
+
+export function listFooterSocialLinks(
+  profile: PortfolioProfile
+): ResolvedFooterSocialLink[] {
+  const entries = profile.socialLinks ?? [];
+  if (entries.length === 0) return [];
+  const catalog = new Map(socialLinkCatalog.map((s) => [s.id, s]));
+  const out: ResolvedFooterSocialLink[] = [];
+  for (const { id, url } of entries) {
+    const meta = catalog.get(id);
+    if (!meta) continue;
+    out.push({ ...meta, url });
+  }
+  return out;
 }
 
 export function getDefaultRedirectSlug(): string | null {
