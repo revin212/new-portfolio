@@ -1,27 +1,24 @@
 {
   "dotnet-portfolio": {
     "sections": ["hero", "experience", "projects", "techStack", "contact", "footer"],
-    "visibleProjectIds": ["ecommerce-vite-dotnet"],
+    "visibleProjectIds": ["sim-sekolah"],
     "visibleTechStackIds": ["vite", "dotnet", "react", "tailwind", "typescript", "git", "docker"]
   },
   "java-portfolio": {
     "sections": ["hero", "experience", "projects", "techStack", "contact", "footer"],
-    "visibleProjectIds": ["smart-pos-inventory"],
+    "visibleProjectIds": ["pos-inventory-dashboard", "futsal-booking"],
     "visibleTechStackIds": ["vite", "spring-boot", "react", "tailwind", "typescript", "git", "docker"]
   },
   "portfolio-freelance": {
-    "sections": ["hero", "experience", "projects", "techStack", "contact", "footer"],
+    "sections": ["hero", "projects", "contact", "footer"],
     "visibleProjectIds": [
       "website-undangan",
       "sim-sekolah",
-      "pos-inventory-umkm",
-      "booking-system-website",
-      "landing-page-perusahaan"
-    ],
-    "visibleTechStackIds": ["next", "react", "vite", "tailwind", "typescript", "node","spring-boot","dotnet","postgres","sqlserver","mysql","git", "docker", "firebase"]
+      "pos-inventory-dashboard",
+      "futsal-booking"
+    ]
   },
   "default": {
     "redirectTo": "portfolio-freelance"
   }
 }
-
