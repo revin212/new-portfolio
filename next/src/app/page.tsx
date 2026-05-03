@@ -1,3 +1,7 @@
+import { redirect } from "next/navigation";
+import { getDefaultRedirectSlug } from "@/lib/portfolio";
+
 export default function Home() {
-  return <main />;
+  const slug = getDefaultRedirectSlug() ?? "portfolio-freelance";
+  redirect(`/${slug}`);
 }
