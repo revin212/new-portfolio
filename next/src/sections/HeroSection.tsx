@@ -25,8 +25,7 @@ export function HeroSection({ profile }: Props) {
               Hi, I&apos;m
             </h1>
             <h2 className="text-6xl sm:text-7xl md:text-[120px] font-[800] tracking-tighter text-on-surface leading-[0.85] sm:leading-[0.8] mb-8 font-headline">
-              Revin <br />
-              Dennis <br />
+              Revin Dennis<br />
               <span className="text-primary italic">Ramadhan</span>
             </h2>
           </div>
@@ -42,22 +41,6 @@ export function HeroSection({ profile }: Props) {
               >
                 Work With Me
               </a>
-              <div className="flex gap-4">
-                <a
-                  className="text-on-surface-variant hover:text-primary transition-colors"
-                  href="#"
-                  aria-label="GitHub"
-                >
-                  <span className="text-2xl font-bold">GH</span>
-                </a>
-                <a
-                  className="text-on-surface-variant hover:text-primary transition-colors"
-                  href="#"
-                  aria-label="LinkedIn"
-                >
-                  <span className="text-2xl font-bold">in</span>
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -85,15 +68,6 @@ export function HeroSection({ profile }: Props) {
 
             <div className="absolute bottom-20 left-0 w-48 h-48 border-2 border-primary/20 rounded-full transform -rotate-12 flex items-center justify-center">
               <div className="w-32 h-32 border border-primary/10 rounded-full" />
-            </div>
-
-            <div className="absolute bottom-10 right-10 flex flex-col gap-2">
-              <div className="h-12 w-12 bg-primary rounded-xl flex items-center justify-center text-on-primary shadow-ambient shadow-primary/30 z-30">
-                DB
-              </div>
-              <div className="h-12 w-12 bg-on-surface rounded-xl flex items-center justify-center text-on-primary shadow-ambient shadow-black/10 z-10 translate-x-4">
-                API
-              </div>
             </div>
           </div>
         </div>

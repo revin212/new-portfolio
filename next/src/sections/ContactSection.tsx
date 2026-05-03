@@ -62,7 +62,7 @@ export function ContactSection() {
               together.
             </h2>
             <p className="mt-8 text-on-surface-variant text-lg leading-relaxed max-w-md">
-              Currently open to freelance projects, permanent roles, or
+              Currently open to freelance projects or
               technical collaborations. Drop a message and let&apos;s start the
               conversation.
             </p>
