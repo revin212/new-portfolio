@@ -1,11 +1,11 @@
 [
   {
-    "id": "smart-pos-inventory",
-    "title": "Smart POS + Inventory",
-    "subtitle": "Smart POS + Inventory using ViteJS and Spring Boot",
-    "description": "A high-performance retail management system designed for real-time tracking and seamless checkout experiences.",
-    "techStackIds": ["vite", "spring-boot"],
-    "image": null,
+    "id": "pos-inventory-dashboard",
+    "title": "Dashboard Point Of Sales & Inventory",
+    "subtitle": "Dashboard website for point of sales and inventory management",
+      "description": "Dashboard website for point of sales and inventory management",
+      "techStackIds": ["vite", "spring-boot"],
+    "image": "/images/pos-inventory.PNG",
     "links": {
       "live": null,
       "repo": null
@@ -25,38 +25,29 @@
   },
   {
     "id": "website-undangan",
-    "title": "Website Undangan",
-    "subtitle": "Invitation website (freelance)",
+    "title": "Invitation Website",
+    "subtitle": "Custom invitation website (wedding, birthday, khitanan, etc.)",
     "description": "A modern invitation website with responsive layout and shareable links.",
     "techStackIds": ["react", "vite", "tailwind", "typescript"],
-    "image": null,
+    "image": "/images/website-undangan.PNG",
     "links": { "live": null, "repo": null }
   },
   {
     "id": "sim-sekolah",
-    "title": "System Information Management Sekolah",
-    "subtitle": "School information management system (freelance)",
+    "title": "School Information Management System",
+    "subtitle": "Custom information management system (school, university, hospital, organization, etc.)",
     "description": "An information management system to support school administration and reporting.",
     "techStackIds": ["react", "vite", "tailwind", "typescript"],
-    "image": null,
+    "image": "/images/sim-sekolah.PNG",
     "links": { "live": null, "repo": null }
   },
   {
-    "id": "pos-inventory-umkm",
-    "title": "Point Of Sales & Inventory Management UMKM",
-    "subtitle": "POS & inventory system for small businesses (freelance)",
-    "description": "A POS and inventory management system focused on simplicity and operational speed.",
+    "id": "futsal-booking",
+    "title": "Website System Booking Lapangan Futsal",
+    "subtitle": "Custom booking system website (lapangan futsal, basket, dll)",
+    "description": "Custom booking system website (lapangan futsal, basket, padel, barbershop, salon, dll)",
     "techStackIds": ["react", "vite", "tailwind", "typescript"],
-    "image": null,
-    "links": { "live": null, "repo": null }
-  },
-  {
-    "id": "booking-system-website",
-    "title": "Website System Booking",
-    "subtitle": "Booking system website (freelance)",
-    "description": "A booking website with schedule/availability flow and clear call-to-actions.",
-    "techStackIds": ["react", "vite", "tailwind", "typescript"],
-    "image": null,
+    "image": "/images/booking-futsal.PNG",
     "links": { "live": null, "repo": null }
   },
   {
