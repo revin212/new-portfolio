@@ -23,6 +23,33 @@ Open:
 
 Root `/` redirects to the default profile from `src/data/profiles.json`.
 
+## Language / Bahasa (URL query)
+
+Default UI language is **Indonesian (`id`)** when there is no saved preference in `localStorage` and no valid language in the URL.
+
+You can override the language with a query parameter on **any** route:
+
+| Parameter | Value | Result |
+|-----------|--------|--------|
+| `lang` | `id` | Bahasa Indonesia |
+| `lang` | `en` | English |
+
+**Format (query string)**
+
+```http
+?lang=<id|en>
+```
+
+**Examples (local dev)**
+
+- Indonesian (explicit): `http://localhost:3000/portfolio-freelance?lang=id`
+- English: `http://localhost:3000/portfolio-freelance?lang=en`
+- Default (no `lang`): same as `?lang=id` for first-time visitors (no `portfolio-locale` in `localStorage` yet)
+
+**Precedence:** `lang` in the URL → then `localStorage` (`portfolio-locale`) → then default `id`.
+
+The in-page **ID / EN** switch still updates `localStorage` and the active locale; opening a link with `?lang=` sets (and stores) that locale for the session.
+
 ## Contact form (Gmail SMTP on serverless)
 
 The contact form calls `POST /api/contact` implemented in:
