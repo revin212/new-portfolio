@@ -5,7 +5,9 @@ import { ContactSection } from "@/sections/ContactSection";
 import { ExperienceSection } from "@/sections/ExperienceSection";
 import { FooterSection } from "@/sections/FooterSection";
 import { HeroSection } from "@/sections/HeroSection";
+import { ProcessSection } from "@/sections/ProcessSection";
 import { ProjectsSection } from "@/sections/ProjectsSection";
+import { ServicesSection } from "@/sections/ServicesSection";
 import { TechStackSection } from "@/sections/TechStackSection";
 
 export default function ProfilePage({
@@ -30,6 +32,10 @@ export default function ProfilePage({
               return <ExperienceSection key={id} />;
             case "projects":
               return <ProjectsSection key={id} profile={profile} />;
+            case "services":
+              return <ServicesSection key={id} />;
+            case "process":
+              return <ProcessSection key={id} />;
             case "techStack":
               return <TechStackSection key={id} profile={profile} />;
             case "contact":

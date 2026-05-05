@@ -4,7 +4,8 @@
   { "id": "experience", "navLabel": "Experience", "anchor": "experience" },
   { "id": "projects", "navLabel": "Projects", "anchor": "projects" },
   { "id": "techStack", "navLabel": "Tech Stack", "anchor": "tech-stack" },
-  { "id": "process", "navLabel": "Process", "anchor": "process" },
+  { "id": "services", "navLabel": "Tipe website", "anchor": "services" },
+  { "id": "process", "navLabel": "Alur pemesanan", "anchor": "process" },
   { "id": "contact", "navLabel": "Contact", "anchor": "contact" },
   { "id": "footer", "navLabel": "Footer", "anchor": "footer" }
 ]

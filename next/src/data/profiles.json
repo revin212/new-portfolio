@@ -20,7 +20,8 @@
     ]
   },
   "portfolio-freelance": {
-    "sections": ["hero", "projects", "contact", "footer"],
+    "hideProjectTechStack": true,
+    "sections": ["hero", "services", "process", "projects", "contact", "footer"],
     "visibleProjectIds": [
       "website-undangan",
       "sim-sekolah",
@@ -28,7 +29,6 @@
       "futsal-booking"
     ],
     "socialLinks": [
-      { "id": "github", "url": "https://github.com/revin212" },
       { "id": "instagram", "url": "https://www.instagram.com/revindr21" },
       { "id": "whatsapp", "url": "https://wa.me/6281392109140" }
     ]

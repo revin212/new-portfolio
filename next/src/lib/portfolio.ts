@@ -10,6 +10,7 @@ export type SectionId =
   | "experience"
   | "projects"
   | "techStack"
+  | "services"
   | "process"
   | "contact"
   | "footer";
@@ -62,6 +63,8 @@ export type PortfolioProfile = {
   socialLinks?: ProfileSocialLink[];
   pageTitle?: string;
   tagline?: string;
+  /** When true, project cards omit tech-stack chips (e.g. freelance profile) */
+  hideProjectTechStack?: boolean;
 };
 
 type ProfilesJson = Record<string, unknown>;
@@ -86,6 +89,7 @@ export function getProfile(slug: string): PortfolioProfile | null {
       : undefined,
     pageTitle: p.pageTitle,
     tagline: p.tagline,
+    hideProjectTechStack: p.hideProjectTechStack === true,
   };
 }
 
