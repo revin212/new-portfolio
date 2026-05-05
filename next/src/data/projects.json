@@ -25,7 +25,7 @@
   },
   {
     "id": "website-undangan",
-    "title": "Invitation Website",
+    "title": "Wedding Invitation Website",
     "subtitle": "Custom invitation website (wedding, birthday, khitanan, etc.)",
     "description": "A modern invitation website with responsive layout and shareable links.",
     "techStackIds": ["react", "vite", "tailwind", "typescript"],
@@ -43,7 +43,7 @@
   },
   {
     "id": "futsal-booking",
-    "title": "Website System Booking Lapangan Futsal",
+    "title": "Futsal Court Booking System Website",
     "subtitle": "Custom booking system website (lapangan futsal, basket, dll)",
     "description": "Custom booking system website (lapangan futsal, basket, padel, barbershop, salon, dll)",
     "techStackIds": ["react", "vite", "tailwind", "typescript"],
