@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocale, useMessages } from "@/lib/i18n";
 import type { SectionRegistryItem } from "@/lib/portfolio";
@@ -119,12 +120,12 @@ export function NavBar({ name, sections }: Props) {
             href="#hero"
             className="flex min-w-0 max-w-[min(100%,20rem)] shrink items-center gap-2.5 sm:gap-3"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/images/revin-logo.png"
               alt=""
               width={160}
               height={40}
+              priority
               className="h-8 w-auto max-h-9 object-contain object-left sm:h-9"
             />
             <span className="sr-only">{name}</span>

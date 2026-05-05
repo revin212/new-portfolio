@@ -1,15 +1,13 @@
 [
   {
-    "id": "pos-inventory-dashboard",
-    "title": "Dashboard Point Of Sales & Inventory",
-    "subtitle": "Dashboard website for point of sales and inventory management",
-      "description": "Dashboard website for point of sales and inventory management",
-      "techStackIds": ["vite", "spring-boot"],
-    "image": "/images/pos-inventory.PNG",
-    "links": {
-      "live": null,
-      "repo": null
-    }
+    "id": "futsal-booking",
+    "title": "Futsal Court Booking System Website",
+    "subtitle": "Custom booking system website (lapangan futsal, basket, dll)",
+    "description": "Custom booking system website (lapangan futsal, basket, padel, barbershop, salon, dll)",
+    "techStackIds": ["react", "vite", "tailwind", "typescript"],
+    "image": "/images/booking-futsal.PNG",
+    "imageObjectPosition": "left center",
+    "links": { "live": null, "repo": null }
   },
   {
     "id": "ecommerce-vite-dotnet",
@@ -42,13 +40,16 @@
     "links": { "live": null, "repo": null }
   },
   {
-    "id": "futsal-booking",
-    "title": "Futsal Court Booking System Website",
-    "subtitle": "Custom booking system website (lapangan futsal, basket, dll)",
-    "description": "Custom booking system website (lapangan futsal, basket, padel, barbershop, salon, dll)",
-    "techStackIds": ["react", "vite", "tailwind", "typescript"],
-    "image": "/images/booking-futsal.PNG",
-    "links": { "live": null, "repo": null }
+    "id": "pos-inventory-dashboard",
+    "title": "Dashboard Point Of Sales & Inventory",
+    "subtitle": "Dashboard website for point of sales and inventory management",
+      "description": "Dashboard website for point of sales and inventory management",
+      "techStackIds": ["vite", "spring-boot"],
+    "image": "/images/pos-inventory.PNG",
+    "links": {
+      "live": null,
+      "repo": null
+    }
   },
   {
     "id": "landing-page-perusahaan",

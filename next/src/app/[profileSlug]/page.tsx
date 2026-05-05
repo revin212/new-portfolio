@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getProfile, listSectionsByIds } from "@/lib/portfolio";
+import { getProfile, listProfilePageSlugs, listSectionsByIds } from "@/lib/portfolio";
 import { NavBar } from "@/sections/NavBar";
 import { ContactSection } from "@/sections/ContactSection";
 import { ExperienceSection } from "@/sections/ExperienceSection";
@@ -9,6 +9,12 @@ import { ProcessSection } from "@/sections/ProcessSection";
 import { ProjectsSection } from "@/sections/ProjectsSection";
 import { ServicesSection } from "@/sections/ServicesSection";
 import { TechStackSection } from "@/sections/TechStackSection";
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return listProfilePageSlugs().map((profileSlug) => ({ profileSlug }));
+}
 
 export default function ProfilePage({
   params,

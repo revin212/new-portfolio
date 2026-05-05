@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { PortfolioProfile } from "@/lib/portfolio";
 import { listFooterSocialLinks } from "@/lib/portfolio";
 
@@ -20,8 +21,7 @@ export function FooterSection({ profile }: Props) {
                 rel="noopener noreferrer"
                 aria-label={s.label}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={s.icon}
                   alt=""
                   width={24}

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import techStacksRaw from "@/data/tech-stacks.json";
 import { useMessages } from "@/lib/i18n";
 import type { PortfolioProfile } from "@/lib/portfolio";
@@ -47,6 +48,11 @@ export function ProjectsSection({ profile }: Props) {
                     alt={p.title}
                     className="h-full w-full object-cover brightness-[0.99] contrast-[0.98] saturate-[0.96] transition-[transform,filter] duration-500 ease-out group-hover:scale-[1.03] group-hover:brightness-[1] group-hover:saturate-100"
                     src={p.image}
+                    style={
+                      p.imageObjectPosition
+                        ? { objectPosition: p.imageObjectPosition }
+                        : undefined
+                    }
                   />
                 ) : (
                   <div className="h-full w-full bg-gradient-to-br from-surface-container-highest via-surface-container to-surface-container-low" />

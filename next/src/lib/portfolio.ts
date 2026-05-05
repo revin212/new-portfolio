@@ -28,6 +28,8 @@ export type Project = {
   description: string;
   techStackIds: string[];
   image?: string | null;
+  /** CSS `object-position` when using cover (e.g. `left center`, `30% center`). */
+  imageObjectPosition?: string | null;
   links?: {
     live?: string | null;
     repo?: string | null;
@@ -91,6 +93,11 @@ export function getProfile(slug: string): PortfolioProfile | null {
     tagline: p.tagline,
     hideProjectTechStack: p.hideProjectTechStack === true,
   };
+}
+
+/** Slugs that resolve to a real profile page (for SSG). Excludes `default` and other invalid entries. */
+export function listProfilePageSlugs(): string[] {
+  return Object.keys(profiles).filter((slug) => getProfile(slug) !== null);
 }
 
 export function listFooterSocialLinks(
