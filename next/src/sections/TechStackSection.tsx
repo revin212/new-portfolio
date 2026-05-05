@@ -1,3 +1,6 @@
+"use client";
+
+import { useMessages } from "@/lib/i18n";
 import type { PortfolioProfile } from "@/lib/portfolio";
 import {
   groupTechStacksByCategory,
@@ -7,6 +10,7 @@ import {
 type Props = { profile: PortfolioProfile };
 
 export function TechStackSection({ profile }: Props) {
+  const m = useMessages();
   const stacks = listVisibleTechStacks(profile);
   const groups = groupTechStacksByCategory(stacks);
   const frontend = groups["Frontend"] ?? [];
@@ -19,21 +23,20 @@ export function TechStackSection({ profile }: Props) {
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-1 py-4">
             <span className="text-primary font-bold tracking-widest text-xs uppercase">
-              Core Competencies
+              {m.techStack.eyebrow}
             </span>
             <h2 className="text-4xl font-bold mt-2 tracking-tight font-headline">
-              Technical Arsenal
+              {m.techStack.title}
             </h2>
             <p className="mt-4 text-on-surface-variant leading-relaxed">
-              A curated selection of technologies I use to build robust,
-              scalable products from the ground up.
+              {m.techStack.intro}
             </p>
           </div>
 
           <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="bg-surface-container-lowest p-8 rounded-2xl hover:bg-primary-container/20 transition-colors border border-outline-variant/10">
               <h4 className="font-bold text-lg mb-6 flex items-center gap-2 font-headline">
-                <span className="text-primary">◼</span> Frontend
+                <span className="text-primary">◼</span> {m.techStack.frontend}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {frontend.map((t) => (
@@ -49,7 +52,7 @@ export function TechStackSection({ profile }: Props) {
 
             <div className="bg-surface-container-lowest p-8 rounded-2xl hover:bg-primary-container/20 transition-colors border border-outline-variant/10">
               <h4 className="font-bold text-lg mb-6 flex items-center gap-2 font-headline">
-                <span className="text-primary">◼</span> Backend
+                <span className="text-primary">◼</span> {m.techStack.backend}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {backend.map((t) => (
@@ -65,8 +68,7 @@ export function TechStackSection({ profile }: Props) {
 
             <div className="bg-surface-container-lowest p-8 rounded-2xl sm:col-span-2 hover:bg-primary-container/20 transition-colors border border-outline-variant/10">
               <h4 className="font-bold text-lg mb-6 flex items-center gap-2 font-headline">
-                <span className="text-primary">◼</span> Tools &amp;
-                Infrastructure
+                <span className="text-primary">◼</span> {m.techStack.tools}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {tools.map((t) => (
@@ -85,4 +87,3 @@ export function TechStackSection({ profile }: Props) {
     </section>
   );
 }
-

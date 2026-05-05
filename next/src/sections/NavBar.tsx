@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useLocale, useMessages } from "@/lib/i18n";
 import type { SectionRegistryItem } from "@/lib/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -9,13 +10,59 @@ type Props = {
   sections: SectionRegistryItem[];
 };
 
+function LanguageSwitch() {
+  const { locale, setLocale } = useLocale();
+  const m = useMessages();
+
+  return (
+    <div
+      className="flex items-center gap-0.5 rounded-xl border border-outline-variant/20 bg-surface-container-lowest/80 p-1 shadow-ambient"
+      role="group"
+      aria-label={m.navUi.language}
+    >
+      <button
+        type="button"
+        onClick={() => setLocale("id")}
+        className={cn(
+          "min-w-[2.25rem] rounded-lg px-2.5 py-1.5 font-headline text-xs font-bold transition-colors",
+          locale === "id"
+            ? "bg-primary text-on-primary"
+            : "text-on-surface-variant hover:text-on-surface"
+        )}
+        aria-pressed={locale === "id"}
+      >
+        {m.navUi.langId}
+      </button>
+      <button
+        type="button"
+        onClick={() => setLocale("en")}
+        className={cn(
+          "min-w-[2.25rem] rounded-lg px-2.5 py-1.5 font-headline text-xs font-bold transition-colors",
+          locale === "en"
+            ? "bg-primary text-on-primary"
+            : "text-on-surface-variant hover:text-on-surface"
+        )}
+        aria-pressed={locale === "en"}
+      >
+        {m.navUi.langEn}
+      </button>
+    </div>
+  );
+}
+
 export function NavBar({ name, sections }: Props) {
+  const m = useMessages();
+
   const items = useMemo(
     () =>
       sections
         .filter((s) => s.anchor && s.navLabel && s.id !== "footer")
-        .map((s) => ({ href: `#${s.anchor}`, label: s.navLabel!, id: s.id })),
-    [sections]
+        .map((s) => ({
+          href: `#${s.anchor}`,
+          label: m.nav[s.id] ?? s.navLabel!,
+          id: s.id,
+        })),
+    [sections, m.nav]
   );
 
   const [activeHref, setActiveHref] = useState(items[0]?.href ?? "#hero");
@@ -67,37 +114,51 @@ export function NavBar({ name, sections }: Props) {
   return (
     <>
       <nav className="fixed top-0 w-full z-50 bg-surface-container-lowest/70 backdrop-blur-xl transition-all duration-300">
-        <div className="flex justify-between items-center px-6 sm:px-8 py-4 max-w-7xl mx-auto">
-          <div className="text-lg font-bold tracking-tighter text-on-surface font-headline">
-            {name}
-          </div>
-
-          <button
-            type="button"
-            className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl bg-surface-container-lowest border border-outline-variant/20 text-on-surface hover:bg-primary-container/20 transition-colors shadow-ambient"
-            aria-label="Open menu"
-            aria-haspopup="dialog"
-            aria-expanded={isOpen}
-            onClick={() => setIsOpen(true)}
+        <div className="flex justify-between items-center px-6 sm:px-8 py-4 max-w-7xl mx-auto gap-4">
+          <a
+            href="#hero"
+            className="flex min-w-0 max-w-[min(100%,20rem)] shrink items-center gap-2.5 sm:gap-3"
           >
-            <span className="text-lg leading-none">☰</span>
-          </button>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/revin-logo.png"
+              alt=""
+              width={160}
+              height={40}
+              className="h-8 w-auto max-h-9 object-contain object-left sm:h-9"
+            />
+            <span className="sr-only">{name}</span>
+          </a>
 
-          <div className="hidden md:flex items-center gap-8">
-            {items.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "font-headline text-sm tracking-tight transition-colors duration-300",
-                  activeHref === item.href
-                    ? "text-primary font-bold border-b-2 border-primary"
-                    : "text-on-surface-variant hover:text-primary font-medium"
-                )}
-              >
-                {item.label}
-              </a>
-            ))}
+          <div className="flex items-center gap-3 md:gap-8 shrink-0">
+            <LanguageSwitch />
+            <button
+              type="button"
+              className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl bg-surface-container-lowest border border-outline-variant/20 text-on-surface hover:bg-primary-container/20 transition-colors shadow-ambient"
+              aria-label={m.navUi.openMenu}
+              aria-haspopup="dialog"
+              aria-expanded={isOpen}
+              onClick={() => setIsOpen(true)}
+            >
+              <span className="text-lg leading-none">☰</span>
+            </button>
+
+            <div className="hidden md:flex items-center gap-8">
+              {items.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "font-headline text-sm tracking-tight transition-colors duration-300",
+                    activeHref === item.href
+                      ? "text-primary font-bold border-b-2 border-primary"
+                      : "text-on-surface-variant hover:text-primary font-medium"
+                  )}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </nav>
@@ -107,13 +168,13 @@ export function NavBar({ name, sections }: Props) {
           className="fixed inset-0 z-[100]"
           role="dialog"
           aria-modal="true"
-          aria-label="Site menu"
+          aria-label={m.navUi.menuTitle}
         >
           {/* Backdrop */}
           <button
             type="button"
             className="absolute inset-0 bg-inverse-surface/50"
-            aria-label="Close menu"
+            aria-label={m.navUi.closeMenu}
             onClick={() => setIsOpen(false)}
           />
 
@@ -122,16 +183,16 @@ export function NavBar({ name, sections }: Props) {
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <div className="font-headline font-extrabold tracking-tight text-on-surface">
-                  Menu
+                  {m.navUi.menuTitle}
                 </div>
                 <div className="text-xs uppercase tracking-widest text-on-surface-variant">
-                  Navigate sections
+                  {m.navUi.menuSubtitle}
                 </div>
               </div>
               <button
                 type="button"
                 className="h-10 w-10 rounded-xl bg-surface-container-lowest border border-outline-variant/20 text-on-surface hover:bg-primary-container/20 transition-colors"
-                aria-label="Close menu"
+                aria-label={m.navUi.closeMenu}
                 onClick={() => setIsOpen(false)}
                 ref={closeBtnRef}
               >

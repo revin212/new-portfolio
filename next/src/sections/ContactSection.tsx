@@ -1,10 +1,12 @@
 "use client";
 
+import { useMessages } from "@/lib/i18n";
 import { useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export function ContactSection() {
+  const m = useMessages();
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -20,6 +22,7 @@ export function ContactSection() {
       name: String(form.get("name") ?? "").trim(),
       email: String(form.get("email") ?? "").trim(),
       message: String(form.get("message") ?? "").trim(),
+      whatsapp: String(form.get("whatsapp") ?? "").trim(),
       // honeypot: should remain empty
       website: String(form.get("website") ?? "").trim(),
     };
@@ -35,14 +38,16 @@ export function ContactSection() {
         | null;
 
       if (!res.ok || !json?.ok) {
-        throw new Error(json?.error ?? "Failed to send message");
+        throw new Error(json?.error ?? m.contact.errorGeneric);
       }
 
       setStatus("success");
       (e.target as HTMLFormElement).reset();
     } catch (err) {
       setStatus("error");
-      setError(err instanceof Error ? err.message : "Failed to send message");
+      setError(
+        err instanceof Error ? err.message : m.contact.errorGeneric
+      );
     }
   }
 
@@ -52,28 +57,29 @@ export function ContactSection() {
         <div className="grid md:grid-cols-2 gap-20">
           <div>
             <span className="text-primary font-bold tracking-widest text-xs uppercase">
-              Get in touch
+              {m.contact.eyebrow}
             </span>
             <h2 className="text-5xl font-extrabold mt-4 tracking-tighter font-headline">
-              Let&apos;s build something <br />
+              {m.contact.headlineLine1} <br />
               <span className="text-primary-dim italic underline decoration-4 underline-offset-8">
-                extraordinary
+                {m.contact.headlineAccent}
               </span>{" "}
-              together.
+              {m.contact.headlineLine2}
             </h2>
             <p className="mt-8 text-on-surface-variant text-lg leading-relaxed max-w-md">
-              Currently open to freelance projects or
-              technical collaborations. Drop a message and let&apos;s start the
-              conversation.
+              {m.contact.intro}
             </p>
 
             <div className="mt-10 max-w-md rounded-2xl bg-surface-container-lowest/70 backdrop-blur border border-outline-variant/10 p-6">
               <p className="text-xs uppercase tracking-widest text-outline font-bold">
-                Response time
+                {m.contact.responseTitle}
               </p>
               <p className="mt-2 text-on-surface-variant leading-relaxed">
-                Typically within <span className="text-on-surface font-semibold">24 hours</span>. Include
-                context and a preferred timeline.
+                {m.contact.responseLead}
+                <span className="text-on-surface font-semibold">
+                  {m.contact.responseHours}
+                </span>
+                {m.contact.responseTrail}
               </p>
             </div>
           </div>
@@ -94,12 +100,12 @@ export function ContactSection() {
                   htmlFor="contact-name"
                   className="text-xs font-bold uppercase tracking-widest text-on-surface-variant"
                 >
-                  Name
+                  {m.contact.labelName}
                 </label>
                 <input
                   id="contact-name"
                   className="w-full bg-surface-container-high rounded-xl border-none border-b-2 border-outline-variant/70 focus:ring-0 focus:border-primary transition-colors py-4 px-4 placeholder:text-on-surface-variant/70"
-                  placeholder="John Doe"
+                  placeholder={m.contact.placeholderName}
                   type="text"
                   name="name"
                   required
@@ -112,19 +118,41 @@ export function ContactSection() {
                   htmlFor="contact-email"
                   className="text-xs font-bold uppercase tracking-widest text-on-surface-variant"
                 >
-                  Email
+                  {m.contact.labelEmail}
                 </label>
                 <input
                   id="contact-email"
                   className="w-full bg-surface-container-high rounded-xl border-none border-b-2 border-outline-variant/70 focus:ring-0 focus:border-primary transition-colors py-4 px-4 placeholder:text-on-surface-variant/70"
-                  placeholder="john@example.com"
+                  placeholder={m.contact.placeholderEmail}
                   type="email"
                   name="email"
                   required
                   disabled={isLoading}
                 />
                 <p className="text-xs text-on-surface-variant">
-                  I’ll reply to this address.
+                  {m.contact.labelEmailHint}
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <label
+                  htmlFor="contact-whatsapp"
+                  className="text-xs font-bold uppercase tracking-widest text-on-surface-variant"
+                >
+                  {m.contact.labelWhatsapp}
+                </label>
+                <input
+                  id="contact-whatsapp"
+                  className="w-full bg-surface-container-high rounded-xl border-none border-b-2 border-outline-variant/70 focus:ring-0 focus:border-primary transition-colors py-4 px-4 placeholder:text-on-surface-variant/70"
+                  placeholder={m.contact.placeholderWhatsapp}
+                  type="tel"
+                  name="whatsapp"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  disabled={isLoading}
+                />
+                <p className="text-xs text-on-surface-variant">
+                  {m.contact.labelWhatsappHint}
                 </p>
               </div>
 
@@ -133,12 +161,12 @@ export function ContactSection() {
                   htmlFor="contact-message"
                   className="text-xs font-bold uppercase tracking-widest text-on-surface-variant"
                 >
-                  Message
+                  {m.contact.labelMessage}
                 </label>
                 <textarea
                   id="contact-message"
                   className="w-full bg-surface-container-high rounded-xl border-none border-b-2 border-outline-variant/70 focus:ring-0 focus:border-primary transition-colors py-4 px-4 resize-none placeholder:text-on-surface-variant/70"
-                  placeholder="Tell me about your project..."
+                  placeholder={m.contact.placeholderMessage}
                   rows={4}
                   name="message"
                   required
@@ -154,7 +182,7 @@ export function ContactSection() {
                 >
                   <span className="inline-flex items-center gap-3">
                     <span className="tracking-tight">
-                      {isLoading ? "Sending..." : "Send Message"}
+                      {isLoading ? m.contact.submitting : m.contact.submit}
                     </span>
                     <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-on-primary/10">
                       {isLoading ? (
@@ -170,20 +198,20 @@ export function ContactSection() {
               {status === "success" ? (
                 <div className="rounded-xl bg-primary-container/30 border border-outline-variant/15 px-4 py-3">
                   <p className="text-sm text-on-surface font-semibold">
-                    Thanks — your message was sent.
+                    {m.contact.successTitle}
                   </p>
                   <p className="text-xs text-on-surface-variant mt-1">
-                    I’ll reply to your email as soon as possible.
+                    {m.contact.successHint}
                   </p>
                 </div>
               ) : null}
               {status === "error" ? (
                 <div className="rounded-xl bg-error-container/20 border border-outline-variant/15 px-4 py-3">
                   <p className="text-sm text-error font-semibold">
-                    {error ?? "Failed to send message."}
+                    {error ?? m.contact.errorGeneric}
                   </p>
                   <p className="text-xs text-on-surface-variant mt-1">
-                    Please try again in a moment.
+                    {m.contact.errorRetry}
                   </p>
                 </div>
               ) : null}
@@ -194,4 +222,3 @@ export function ContactSection() {
     </section>
   );
 }
-

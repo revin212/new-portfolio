@@ -1,3 +1,6 @@
+"use client";
+
+import { useMessages } from "@/lib/i18n";
 import type { PortfolioProfile } from "@/lib/portfolio";
 
 type Props = {
@@ -5,9 +8,8 @@ type Props = {
 };
 
 export function HeroSection({ profile }: Props) {
-  const tagline =
-    profile.tagline ??
-    "A dedicated Software Developer building modern web apps from UI to backend with precision and clean code architecture.";
+  const m = useMessages();
+  const tagline = profile.tagline ?? m.hero.taglineDefault;
 
   return (
     <section
@@ -16,13 +18,9 @@ export function HeroSection({ profile }: Props) {
     >
       <div className="grid lg:grid-cols-12 gap-12 items-center w-full">
         <div className="lg:col-span-8 space-y-8">
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold tracking-widest uppercase">
-            Available for new opportunities
-          </div>
-
           <div>
             <h1 className="text-2xl md:text-3xl font-bold text-primary mb-4 tracking-tight font-headline">
-              Hi, I&apos;m
+              {m.hero.hi}
             </h1>
             <h2 className="text-6xl sm:text-7xl md:text-[120px] font-[800] tracking-tighter text-on-surface leading-[0.85] sm:leading-[0.8] mb-8 font-headline">
               Revin Dennis<br />
@@ -39,7 +37,7 @@ export function HeroSection({ profile }: Props) {
                 className="bg-gradient-to-br from-primary to-primary-dim text-on-primary px-8 py-4 rounded-xl font-bold transition-transform active:scale-95 shadow-ambient shadow-primary/20"
                 href="#contact"
               >
-                Work With Me
+                {m.hero.cta}
               </a>
             </div>
           </div>
@@ -75,4 +73,3 @@ export function HeroSection({ profile }: Props) {
     </section>
   );
 }
-

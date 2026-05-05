@@ -6,6 +6,7 @@ const ContactPayloadSchema = z.object({
   name: z.string().trim().min(1).max(120),
   email: z.string().trim().email().max(254),
   message: z.string().trim().min(1).max(4000),
+  whatsapp: z.string().trim().max(40).optional().default(""),
   // honeypot: if filled, treat as spam
   website: z.string().trim().max(500).optional().default(""),
 });
@@ -59,7 +60,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const { name, email, message, website } = parsed.data;
+  const { name, email, message, whatsapp, website } = parsed.data;
   if (website) {
     // Honeypot hit; pretend success to avoid giving bots feedback.
     return NextResponse.json({ ok: true });
@@ -81,9 +82,15 @@ export async function POST(req: Request) {
     });
 
     const subject = `Portfolio contact from ${name}`;
-    const text = [`Name: ${name}`, `Reply to: ${email}`, "", "Message:", message].join(
-      "\n"
-    );
+    const lines = [
+      `Name: ${name}`,
+      `Reply to: ${email}`,
+      whatsapp ? `WhatsApp: ${whatsapp}` : null,
+      "",
+      "Message:",
+      message,
+    ].filter((line) => line !== null);
+    const text = lines.join("\n");
 
     await transporter.sendMail({
       from: contactFromEmail,

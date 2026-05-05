@@ -1,13 +1,19 @@
+"use client";
+
+import { useMessages } from "@/lib/i18n";
+
 export function ExperienceSection() {
+  const m = useMessages();
+
   return (
     <section className="py-32 px-8" id="experience">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <span className="text-primary font-bold tracking-widest text-xs uppercase">
-            Career Path
+            {m.experience.eyebrow}
           </span>
           <h2 className="text-4xl font-bold mt-2 tracking-tight font-headline">
-            Professional Experience
+            {m.experience.title}
           </h2>
         </div>
 
@@ -18,18 +24,16 @@ export function ExperienceSection() {
                 HS
               </div>
               <h3 className="text-2xl font-bold text-on-surface font-headline">
-                Software Developer — PT Heksa Solution Insurance
+                {m.experience.roleTitle}
               </h3>
             </div>
             <p className="text-on-surface-variant max-w-2xl font-body leading-relaxed">
-              Developing enterprise-grade insurance solutions with a focus on
-              robust backend architectures and highly responsive user
-              interfaces.
+              {m.experience.roleBody}
             </p>
           </div>
           <div className="text-right whitespace-nowrap">
             <span className="px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-bold text-sm">
-              Jul 2024 — Present
+              {m.experience.period}
             </span>
           </div>
         </div>
@@ -37,4 +41,3 @@ export function ExperienceSection() {
     </section>
   );
 }
-
