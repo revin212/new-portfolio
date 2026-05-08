@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import techStacksRaw from "@/data/tech-stacks.json";
 import { useMessages } from "@/lib/i18n";
 import type { PortfolioProfile } from "@/lib/portfolio";
@@ -39,32 +38,64 @@ export function ProjectsSection({ profile }: Props) {
         <div className="grid md:grid-cols-2 gap-12">
           {projects.map((p) => (
             <div key={p.id} className="group cursor-pointer">
-              <div
-                className="aspect-[4/3] mb-6 relative overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container-lowest shadow-ambient ring-1 ring-inset ring-outline-variant/[0.07]"
-              >
-                {p.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    alt={p.title}
-                    className="h-full w-full object-cover brightness-[0.99] contrast-[0.98] saturate-[0.96] transition-[transform,filter] duration-500 ease-out group-hover:scale-[1.03] group-hover:brightness-[1] group-hover:saturate-100"
-                    src={p.image}
-                    style={
-                      p.imageObjectPosition
-                        ? { objectPosition: p.imageObjectPosition }
-                        : undefined
-                    }
-                  />
-                ) : (
-                  <div className="h-full w-full bg-gradient-to-br from-surface-container-highest via-surface-container to-surface-container-low" />
-                )}
-                {/* Hover: brand-tinted veil + floating chip (avoids harsh dark wash on screenshots) */}
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/[0.18] via-primary/[0.06] to-transparent" />
-                  <span className="relative flex h-12 w-12 translate-y-1 items-center justify-center rounded-full bg-surface-container-lowest/95 text-xl font-semibold text-primary shadow-ambient ring-1 ring-outline-variant/20 transition-transform duration-300 ease-out group-hover:translate-y-0">
-                    ↗
-                  </span>
+              {p.links?.live ? (
+                <a
+                  className="block"
+                  href={p.links.live}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="aspect-[4/3] mb-6 relative overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container-lowest shadow-ambient ring-1 ring-inset ring-outline-variant/[0.07]">
+                    {p.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        alt={p.title}
+                        className="h-full w-full object-cover brightness-[0.99] contrast-[0.98] saturate-[0.96] transition-[transform,filter] duration-500 ease-out group-hover:scale-[1.03] group-hover:brightness-[1] group-hover:saturate-100"
+                        src={p.image}
+                        style={
+                          p.imageObjectPosition
+                            ? { objectPosition: p.imageObjectPosition }
+                            : undefined
+                        }
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-gradient-to-br from-surface-container-highest via-surface-container to-surface-container-low" />
+                    )}
+                    {/* Hover: brand-tinted veil + floating chip (avoids harsh dark wash on screenshots) */}
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/[0.18] via-primary/[0.06] to-transparent" />
+                      <span className="relative flex h-12 w-12 translate-y-1 items-center justify-center rounded-full bg-surface-container-lowest/95 text-xl font-semibold text-primary shadow-ambient ring-1 ring-outline-variant/20 transition-transform duration-300 ease-out group-hover:translate-y-0">
+                        ↗
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              ) : (
+                <div className="aspect-[4/3] mb-6 relative overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container-lowest shadow-ambient ring-1 ring-inset ring-outline-variant/[0.07]">
+                  {p.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      alt={p.title}
+                      className="h-full w-full object-cover brightness-[0.99] contrast-[0.98] saturate-[0.96] transition-[transform,filter] duration-500 ease-out group-hover:scale-[1.03] group-hover:brightness-[1] group-hover:saturate-100"
+                      src={p.image}
+                      style={
+                        p.imageObjectPosition
+                          ? { objectPosition: p.imageObjectPosition }
+                          : undefined
+                      }
+                    />
+                  ) : (
+                    <div className="h-full w-full bg-gradient-to-br from-surface-container-highest via-surface-container to-surface-container-low" />
+                  )}
+                  {/* Hover: brand-tinted veil + floating chip (avoids harsh dark wash on screenshots) */}
+                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/[0.18] via-primary/[0.06] to-transparent" />
+                    <span className="relative flex h-12 w-12 translate-y-1 items-center justify-center rounded-full bg-surface-container-lowest/95 text-xl font-semibold text-primary shadow-ambient ring-1 ring-outline-variant/20 transition-transform duration-300 ease-out group-hover:translate-y-0">
+                      ↗
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="space-y-4">
                 {!profile.hideProjectTechStack ? (
@@ -85,28 +116,18 @@ export function ProjectsSection({ profile }: Props) {
                 <p className="text-on-surface-variant font-body line-clamp-2">
                   {p.description}
                 </p>
-                <div className="flex gap-4 pt-2">
-                  {p.links?.live ? (
+                {p.links?.repo ? (
+                  <div className="pt-2">
                     <a
-                      className="text-primary font-bold underline underline-offset-4"
-                      href={p.links.live}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {m.projects.live}
-                    </a>
-                  ) : null}
-                  {p.links?.repo ? (
-                    <a
-                      className="text-primary font-bold underline underline-offset-4"
+                      className="inline-flex items-center justify-center bg-gradient-to-br from-primary to-primary-dim text-on-primary px-6 py-3 rounded-xl font-bold transition-transform active:scale-95 shadow-ambient shadow-primary/20"
                       href={p.links.repo}
                       target="_blank"
                       rel="noreferrer"
                     >
                       {m.projects.repo}
                     </a>
-                  ) : null}
-                </div>
+                  </div>
+                ) : null}
               </div>
             </div>
           ))}

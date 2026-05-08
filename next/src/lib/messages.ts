@@ -133,8 +133,8 @@ export const messages: Record<Locale, MessageBundle> = {
       eyebrow: "Portfolio",
       title: "Selected Works",
       scrollHint: "Scroll to explore",
-      live: "Live",
-      repo: "Repo",
+      live: "Live Preview",
+      repo: "GitHub Repo",
     },
     experience: {
       eyebrow: "Career Path",
@@ -298,8 +298,8 @@ export const messages: Record<Locale, MessageBundle> = {
       eyebrow: "Portofolio",
       title: "Karya pilihan",
       scrollHint: "Gulir untuk melihat",
-      live: "Live",
-      repo: "Repo",
+      live: "Live Preview",
+      repo: "GitHub Repo",
     },
     experience: {
       eyebrow: "Perjalanan karier",
