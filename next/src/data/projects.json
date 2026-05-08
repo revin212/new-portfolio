@@ -7,7 +7,7 @@
     "techStackIds": ["react", "vite", "tailwind", "typescript"],
     "image": "/images/booking-futsal.PNG",
     "imageObjectPosition": "left center",
-    "links": { "live": null, "repo": null }
+    "links": { "live": "https://futsal.revindennis.cloud/", "repo": null }
   },
   {
     "id": "ecommerce-vite-dotnet",
@@ -28,7 +28,7 @@
     "description": "A modern invitation website with responsive layout and shareable links.",
     "techStackIds": ["react", "vite", "tailwind", "typescript"],
     "image": "/images/website-undangan.PNG",
-    "links": { "live": null, "repo": null }
+    "links": { "live": "https://undangan.revindennis.cloud/", "repo": null }
   },
   {
     "id": "sim-sekolah",
@@ -37,7 +37,7 @@
     "description": "An information management system to support school administration and reporting.",
     "techStackIds": ["react", "vite", "tailwind", "typescript"],
     "image": "/images/sim-sekolah.PNG",
-    "links": { "live": null, "repo": null }
+    "links": { "live": "https://sim.revindennis.cloud/", "repo": null }
   },
   {
     "id": "pos-inventory-dashboard",
@@ -47,7 +47,7 @@
       "techStackIds": ["vite", "spring-boot"],
     "image": "/images/pos-inventory.PNG",
     "links": {
-      "live": null,
+      "live": "https://pos.revindennis.cloud/",
       "repo": null
     }
   },
